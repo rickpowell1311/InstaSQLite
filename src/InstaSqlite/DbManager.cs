@@ -9,9 +9,6 @@ namespace InstaSqlite
 {
     public class DbManager : IDbManager
     {
-        public static bool initialized;
-
-        private Func<IDbConnection> database;
         internal DbManagerConfiguration Configuration { get; private set; }
         private readonly Action<DbManagerConfiguration> configurationAction;
 
@@ -25,20 +22,15 @@ namespace InstaSqlite
         {
             get
             {
-                if (!initialized)
+                try
                 {
-                    try
-                    {
-                        configurationAction?.Invoke(Configuration);
-                        database = Initialize(Configuration);
-                    }
-                    catch (Exception ex)
-                    {
-                        database = () => { throw ex; };
-                    }
+                    configurationAction?.Invoke(Configuration);
+                    return Initialize(Configuration);
                 }
-
-                return database;
+                catch (Exception ex)
+                {
+                    return () => { throw ex; };
+                }
             }
         }
 

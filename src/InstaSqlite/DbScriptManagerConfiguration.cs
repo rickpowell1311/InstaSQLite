@@ -17,9 +17,17 @@ namespace InstaSqlite
         {
             var script = Activator.CreateInstance<T>();
 
-            if (Scripts.Select(scr => scr.Id).Contains(script.Id))
+            foreach (var existingScript in Scripts)
             {
-                throw new ArgumentException(string.Format("Multiple scripts detected with Id of '{0}'", script.Id));
+                if (existingScript.Id == script.Id)
+                {
+                    if (script.GetType().GUID != existingScript.GetType().GUID)
+                    {
+                        throw new ArgumentException(string.Format("Multiple scripts detected with Id of '{0}'", script.Id));
+                    }
+
+                    return;
+                }
             }
 
             Scripts.Add(script);

@@ -36,6 +36,21 @@ namespace InstaSqlite.Tests
         }
 
         [Fact]
+        public void DbManager_WithOneValidScript_CalledTwice_DoesNotThrowExceptions()
+        {
+            var dbManager = new DbManager(config =>
+            {
+                config.ConfigureScripts(s =>
+                {
+                    s.IncludeScript<ValidTestScript>();
+                });
+            });
+
+            using (var conn = dbManager.Database()) { };
+            using (var conn = dbManager.Database()) { };
+        }
+
+        [Fact]
         public void DbManager_WithOneInvalidScript_ThrowsException()
         {
             var dbManager = new DbManager(config =>
