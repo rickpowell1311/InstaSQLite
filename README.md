@@ -28,7 +28,7 @@ var dbManager = new DbManager(config =>
 });
 ```
 
-Get the standard ADO.NET IDbConnection, and use it (probably with Dapper or another nice micro ORM)
+Get the standard ADO.NET IDbConnection, and use it (probably with Dapper or another nice micro ORM). Updates will be applied automatically if they have not been already.
 
 ```
 using (var conn = dbManager.Database())
