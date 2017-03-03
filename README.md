@@ -1,6 +1,4 @@
-### Insta SQLite ###
-
-* SQLite database management in an instance
+### Insta SQLite - SQLite database management in an instance ###
 
 If you're using a SQLite database in your project, manage your database updates in code without ever touching the database anywhere else.
 
@@ -30,7 +28,7 @@ var dbManager = new DbManager(config =>
 });
 ```
 
-Get the standard ADO.NET IDbConnection, and use it (probably with Dapper or another nice micro ORM)
+Get the standard ADO.NET IDbConnection, and use it (probably with Dapper or another nice micro ORM). Scripts be applied automatically if they have not been already.
 
 ```
 using (var conn = dbManager.Database())
