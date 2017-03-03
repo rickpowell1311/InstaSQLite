@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSqlite", "InstaSqlite\InstaSqlite.csproj", "{84D3C9CD-57A5-4F1A-9ED6-53E9B02D294F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSqlite.Tests", "InstaSqlite.Tests\InstaSqlite.Tests.csproj", "{C4E55366-A4D6-4EF4-B3A9-3F8488C3C6BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84D3C9CD-57A5-4F1A-9ED6-53E9B02D294F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D3C9CD-57A5-4F1A-9ED6-53E9B02D294F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D3C9CD-57A5-4F1A-9ED6-53E9B02D294F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D3C9CD-57A5-4F1A-9ED6-53E9B02D294F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E55366-A4D6-4EF4-B3A9-3F8488C3C6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E55366-A4D6-4EF4-B3A9-3F8488C3C6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E55366-A4D6-4EF4-B3A9-3F8488C3C6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E55366-A4D6-4EF4-B3A9-3F8488C3C6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
