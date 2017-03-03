@@ -1,6 +1,4 @@
-### Insta SQLite ###
-
-* SQLite database management in an instance
+### Insta SQLite - SQLite database management in an instance ###
 
 If you're using a SQLite database in your project, manage your database updates in code without ever touching the database anywhere else.
 
