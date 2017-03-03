@@ -7,7 +7,7 @@ using Dapper.Contrib.Extensions;
 
 namespace InstaSqlite
 {
-    public class DbManager
+    public class DbManager : IDbManager
     {
         public static bool initialized;
 

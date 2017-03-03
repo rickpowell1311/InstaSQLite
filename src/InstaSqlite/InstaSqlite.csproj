@@ -76,6 +76,7 @@
     <Compile Include="DbManagerConfiguration.cs" />
     <Compile Include="DbScriptManagerConfiguration.cs" />
     <Compile Include="ExecutedScript.cs" />
+    <Compile Include="IDbManager.cs" />
     <Compile Include="IScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
