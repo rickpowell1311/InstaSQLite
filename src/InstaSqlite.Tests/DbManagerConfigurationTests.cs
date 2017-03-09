@@ -8,19 +8,6 @@ namespace InstaSqlite.Tests
     public class DbManagerConfigurationTests
     {
         [Fact]
-        public void SetDatabaseFilePath_ToDirectoryWithoutWriteAccess_ShouldThrowSecurityException()
-        {
-            var directory = new DirectoryInfo("c:\\");
-
-            var manager = new DbManager(config =>
-            {
-                config.SetDatabaseFilePath(directory);
-            });
-
-            Assert.Throws<SecurityException>(() => { using (var database = manager.Database()) { } });
-        }
-
-        [Fact]
         public void SetDatabaseDirectory_AsNull_ShouldThrowArgumentException()
         {
             var manager = new DbManager(config =>
