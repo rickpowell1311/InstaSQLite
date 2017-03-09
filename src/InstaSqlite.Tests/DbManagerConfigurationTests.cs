@@ -45,5 +45,18 @@ namespace InstaSqlite.Tests
 
             Assert.Throws<ArgumentException>(() => { using (var database = manager.Database()) { } });
         }
+
+        [Fact]
+        public void SetValidDatabaseFileName_AndValidDirectoryWithWriteAccess_DoesNotThrowException()
+        {
+            var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
+
+            var manager = new DbManager(config =>
+            {
+                config.SetDatabaseFilePath(directory, "testdatabase.sqlite");
+            });
+
+            using (var database = manager.Database()) { } ;
+        }
     }
 }

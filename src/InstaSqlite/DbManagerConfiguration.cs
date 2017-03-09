@@ -42,7 +42,7 @@ namespace InstaSqlite
                 throw new ArgumentException("Directory does not exist. Please create the directory to contain the Sqlite database before running");
             }
 
-            if (HasWriteAccessToFolder(directory.FullName))
+            if (!HasWriteAccessToFolder(directory.FullName))
             {
                 throw new SecurityException("Cannot create SQL database in the specified directory. Write access is denied");
             }
