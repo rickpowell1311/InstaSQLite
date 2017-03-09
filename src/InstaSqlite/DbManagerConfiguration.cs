@@ -21,7 +21,7 @@ namespace InstaSqlite
 
         internal DbManagerConfiguration()
         {
-            DbPath = Path.Combine(Directory.GetCurrentDirectory(), "database.sqlite");
+            DbPath = DbManagerDefaults.DefaultDbPath;
             DbScriptManagerConfiguration = new DbScriptManagerConfiguration();
         }
 

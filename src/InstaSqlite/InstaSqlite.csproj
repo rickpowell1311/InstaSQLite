@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="DbManager.cs" />
     <Compile Include="DbManagerConfiguration.cs" />
+    <Compile Include="DbManagerDefaults.cs" />
     <Compile Include="DbScriptManagerConfiguration.cs" />
     <Compile Include="ExecutedScript.cs" />
     <Compile Include="IDbManager.cs" />
