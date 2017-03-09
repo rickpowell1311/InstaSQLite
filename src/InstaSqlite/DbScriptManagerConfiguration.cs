@@ -13,10 +13,8 @@ namespace InstaSqlite
             Scripts = new List<IScript>();
         }
 
-        public void IncludeScript<T>() where T : IScript, new()
+        public void IncludeScript<T>(T script) where T : IScript
         {
-            var script = Activator.CreateInstance<T>();
-
             foreach (var existingScript in Scripts)
             {
                 if (existingScript.Id == script.Id)
@@ -31,6 +29,13 @@ namespace InstaSqlite
             }
 
             Scripts.Add(script);
+        }
+
+        public void IncludeScript<T>() where T : class, IScript, new()
+        {
+            var script = Activator.CreateInstance<T>();
+
+            this.IncludeScript(script);
         }
     }
 }
