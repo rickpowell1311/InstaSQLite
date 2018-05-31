@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{F3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InstaSqlite.ScannedAssembly", "InstaSqlite.ScannedAssembly.Portable\InstaSqlite.ScannedAssembly.csproj", "{1ACFB6F2-3AE5-45C3-A6E6-D7699682059A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSqlite.Tests.Portable", "InstaSqlite.Tests.Portable\InstaSqlite.Tests.Portable.csproj", "{A8C97E58-8E62-4719-BCFB-8AC30BEDA938}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{1ACFB6F2-3AE5-45C3-A6E6-D7699682059A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ACFB6F2-3AE5-45C3-A6E6-D7699682059A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ACFB6F2-3AE5-45C3-A6E6-D7699682059A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8C97E58-8E62-4719-BCFB-8AC30BEDA938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8C97E58-8E62-4719-BCFB-8AC30BEDA938}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8C97E58-8E62-4719-BCFB-8AC30BEDA938}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8C97E58-8E62-4719-BCFB-8AC30BEDA938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,7 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E4237F04-A295-46EC-83D9-543740AA22BD} = {F3D8F3E3-78D7-4877-9D7D-7ADDE452EA42}
 		{1ACFB6F2-3AE5-45C3-A6E6-D7699682059A} = {F3D8F3E3-78D7-4877-9D7D-7ADDE452EA42}
-		{A8C97E58-8E62-4719-BCFB-8AC30BEDA938} = {F3D8F3E3-78D7-4877-9D7D-7ADDE452EA42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DC1455E-4682-4AD2-937D-743B32820B30}
