@@ -25,7 +25,7 @@ namespace InstaSqlite
                 try
                 {
                     configurationAction?.Invoke(Configuration);
-                    return Initialize(Configuration);
+                    return Initialize();
                 }
                 catch (Exception ex)
                 {
@@ -34,7 +34,7 @@ namespace InstaSqlite
             }
         }
 
-        private Func<IDbConnection> Initialize(DbManagerConfiguration configurationAction)
+        private Func<IDbConnection> Initialize()
         {
             using (var conn = new SQLiteConnection(string.Format("Data Source={0};", Configuration.DbPath)))
             {
@@ -44,22 +44,22 @@ namespace InstaSqlite
                 var executedScriptIds = conn.GetAll<ExecutedScript>().Select(scr => scr.Id);
 
                 foreach (var script in Configuration.DbScriptManagerConfiguration.Scripts
-                    .Where(scr => !executedScriptIds.Contains(scr.Id))
-                    .OrderBy(scr => scr.Id))
+                    .Where(scr => !executedScriptIds.Contains(scr.Key))
+                    .OrderBy(scr => scr.Key))
                 {
                     using (var transaction = conn.BeginTransaction())
                     {
                         try
                         {
-                            conn.Execute(script.Sql, transaction: transaction);
-                            conn.Insert(new ExecutedScript { Id = script.Id });
+                            conn.Execute(script.Value.Sql, transaction: transaction);
+                            conn.Insert(new ExecutedScript { Id = script.Key });
                             transaction.Commit();
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
 
-                            var exception = new Exception(string.Format("Whilst trying to apply script  with Id '{0}'", script.Id), ex);
+                            var exception = new Exception(string.Format("Whilst trying to apply script  with Id '{0}'", script.Key), ex);
 
                             // This ensures any further calls to the database are met with exception until script is amended
                             return () => { throw exception; };

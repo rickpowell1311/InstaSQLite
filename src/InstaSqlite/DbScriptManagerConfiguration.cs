@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace InstaSqlite
 {
     public class DbScriptManagerConfiguration
     {
-        internal List<IScript> Scripts { get; private set; }
+        internal Dictionary<int, IScript> Scripts { get; private set; }
 
         internal DbScriptManagerConfiguration()
         {
-            Scripts = new List<IScript>();
+            Scripts = new Dictionary<int, IScript>();
         }
 
         public void IncludeScript<T>(T script) where T : IScript
         {
-            foreach (var existingScript in Scripts)
+            IncludeScript((IScript)script);
+        }
+
+        public void IncludeScript(IScript script)
+        {
+            foreach (var existingScript in Scripts.Values)
             {
                 if (existingScript.Id == script.Id)
                 {
@@ -28,7 +34,7 @@ namespace InstaSqlite
                 }
             }
 
-            Scripts.Add(script);
+            Scripts[script.Id] = script;
         }
 
         public void IncludeScript<T>() where T : class, IScript, new()
@@ -36,6 +42,21 @@ namespace InstaSqlite
             var script = Activator.CreateInstance<T>();
 
             this.IncludeScript(script);
+        }
+
+        public void ScanForScripts(params Assembly[] assemblies)
+        {
+            var scriptTypes = assemblies
+                .SelectMany(a => a.GetTypes().Where(
+                    t => t.GetInterfaces().Any(i => i == typeof(IScript))
+                    && t.IsClass
+                    && t.GetConstructors().Any(c => !c.GetParameters().Any())));
+
+            foreach (var scriptType in scriptTypes)
+            {
+                var script = (IScript)Activator.CreateInstance(scriptType);
+                this.IncludeScript(script);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InstaSqlite.ScannedAssembly;
+using System;
 using Xunit;
 
 namespace InstaSqlite.Tests
@@ -18,6 +19,23 @@ namespace InstaSqlite.Tests
             });
 
             Assert.Throws<ArgumentException>(() => { using (var database = dbManager.Database()) { } });
+        }
+
+        [Fact]
+        public void DbScriptManagerConfiguration_ScanForScripts_IncludesValidTestScript()
+        {
+            var dbManager = new DbManager(config =>
+            {
+                config.ConfigureScripts(s =>
+                {
+                    s.ScanForScripts(typeof(ScannedScript).Assembly);
+                });
+            });
+
+            using (var database = dbManager.Database())
+            {
+                Assert.Contains(new ScannedScript().Id, dbManager.Configuration.DbScriptManagerConfiguration.Scripts.Keys);
+            }
         }
 
         private class ValidTestScript : IScript
