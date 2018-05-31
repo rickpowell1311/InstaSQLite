@@ -15,4 +15,4 @@ build:
   include_nuget_references: true
   verbosity: minimal
 after_build:
-- cmd: cd .\src && cd .\InstaSqlite.Portable && nuget pack
+- cmd: nuget pack
